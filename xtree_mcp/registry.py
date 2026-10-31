@@ -14,7 +14,7 @@ MCP_TOOLS: list[tuple[str, str]] = [
     ("wechat_channels_feeds_convert_id", "wechat.channels.feeds.convert-id"),
     ("wechat_articles_metrics", "wechat.articles.metrics"),
     ("wechat_articles_metrics_pro", "wechat.articles.metrics-pro"),
-    ("wechat_mp_accounts", "wechat.accounts.posts"),
+    ("wechat_accounts_posts", "wechat.accounts.posts"),
     ("wechat_accounts_search_by_owner_live", "wechat.accounts.search-by-owner-live"),
     ("wechat_library_search_articles", "wechat.library.articles.search"),
     ("wechat_library_search_articles_tokenized", "wechat.library.articles.tokenized"),

@@ -1,8 +1,8 @@
 # xtree-mcp — XTREE MCP server
 
-MCP server that exposes [XTREE](https://www.xtree.io) **real-time raw data** tools for AI agents (Cursor, Claude Desktop, and any MCP client). Fetch WeChat search / Channels / article metrics and more — **not** a BI or copywriting product.
+MCP server for [XTREE](https://www.xtree.io), a real-time social media data API. This repository exposes **WeChat** tools (search, Channels, article metrics, account history, library search) plus account balance for Cursor, Claude Desktop, and any MCP client. Other live platforms are on the REST API and the [Python SDK](https://github.com/xtree-io/xtree-python). **Not** a BI or copywriting product.
 
-Tools call `https://api.xtree.io` with your own API Key and wallet (pay per call).
+Tools call `https://api.xtree.io` with your own API Key and wallet (pay per call). The `xtree` dependency is pinned to the GitHub SDK, because the PyPI name `xtree` is an unrelated project.
 
 ## Install / run
 
