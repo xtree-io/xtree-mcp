@@ -1,0 +1,31 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.xtree-io/xtree",
+  "title": "XTREE",
+  "description": "WeChat tools for accounts, articles, and Channels. Other platforms use REST.",
+  "repository": {
+    "url": "https://github.com/xtree-io/xtree-mcp",
+    "source": "github"
+  },
+  "version": "0.1.1",
+  "websiteUrl": "https://www.xtree.io/mcp",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "xtree-mcp",
+      "version": "0.1.1",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "XTREE_API_KEY",
+          "description": "XTREE API key, xt_live_...",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

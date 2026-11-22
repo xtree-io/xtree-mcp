@@ -1,0 +1,40 @@
+name: publish
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  id-token: write
+
+jobs:
+  pypi:
+    runs-on: ubuntu-latest
+    environment: pypi
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - id: version
+        shell: bash
+        run: |
+          version=$(python -c "import tomllib; print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])")
+          tag="${GITHUB_REF_NAME#v}"
+          echo "pyproject=$version tag=$tag"
+          if [ "$tag" != "$version" ]; then
+            echo "tag does not match version, skip upload"
+            echo "match=false" >> "$GITHUB_OUTPUT"
+          elif python -c "import sys,urllib.request; urllib.request.urlopen('https://pypi.org/pypi/xtree-mcp/'+sys.argv[1]+'/json')" "$version"; then
+            echo "version already on PyPI, skip upload"
+            echo "match=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "match=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.version.outputs.match == 'true'
+        run: pip install build twine
+      - if: steps.version.outputs.match == 'true'
+        run: python -m build
+      - if: steps.version.outputs.match == 'true'
+        uses: pypa/gh-action-pypi-publish@release/v1
